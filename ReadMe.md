@@ -9,19 +9,15 @@ SSH
 ssh <host-name>@<host-address>
 ```
 
-```
-ssh ubuntu@130.215.14.9
-```
+```ssh ubuntu@130.215.14.9```
 
 RUN ACC
 -------
 SSH into RCCAR and run the below commands
 
-1. ```bash
-    roslaunch acc_ros acc_startup.launch```
+1. ```roslaunch acc_ros acc_startup.launch```
 
-2. ```bash
-    roslaunch acc_ros acc.launch```
+2. ```roslaunch acc_ros acc.launch```
     
 Trajectory Tracking
 
