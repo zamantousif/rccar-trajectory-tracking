@@ -1,0 +1,158 @@
+--------------------------------------------------------------------------------
+Node [/rccar_serial]
+Publications: 
+ * /racer/teensy/debug [std_msgs/Float32]
+ * /racer/teensy/power [std_msgs/Float32]
+ * /racer/teensy/rpm [std_msgs/Float32]
+ * /rosout [rosgraph_msgs/Log]
+ * /diagnostics [diagnostic_msgs/DiagnosticArray]
+
+Subscriptions: 
+ * /racer/teensy/pidinfo [std_msgs/Float32MultiArray]
+ * /racer/teensy/steer [std_msgs/Int32]
+ * /racer/teensy/estop [std_msgs/Bool]
+
+Services: 
+ * /rccar_serial/set_logger_level
+ * /rccar_serial/get_loggers
+
+
+contacting node http://130.215.14.9:45209/ ...
+Pid: 18024
+Connections:
+ * topic: /racer/teensy/rpm
+    * to: /acc_acc
+    * direction: outbound
+    * transport: TCPROS
+ * topic: /racer/teensy/rpm
+    * to: /acc_autoPID
+    * direction: outbound
+    * transport: TCPROS
+ * topic: /rosout
+    * to: /rosout
+    * direction: outbound
+    * transport: TCPROS
+ * topic: /racer/teensy/estop
+    * to: /acc_autoPID (http://130.215.14.9:44693/)
+    * direction: inbound
+    * transport: TCPROS
+ * topic: /racer/teensy/steer
+    * to: /acc_acc (http://130.215.14.9:33663/)
+    * direction: inbound
+    * transport: TCPROS
+ * topic: /racer/teensy/pidinfo
+    * to: /acc_autoPID (http://130.215.14.9:44693/)
+    * direction: inbound
+    * transport: TCPROS
+
+--------------------------------------------------------------------------------
+Node [/acc_acc]
+Publications: 
+ * /racer/ACC/nextSpeed [std_msgs/Float32]
+ * /testtest [std_msgs/Float32]
+ * /rosout [rosgraph_msgs/Log]
+ * /racer/teensy/steer [std_msgs/Int32]
+
+Subscriptions: 
+ * /racer/teensy/rpm [std_msgs/Float32]
+ * /racer/lidar/distance [std_msgs/Float32]
+
+Services: 
+ * /acc_acc/get_loggers
+ * /acc_acc/set_logger_level
+
+
+contacting node http://130.215.14.9:33663/ ...
+Pid: 18329
+Connections:
+ * topic: /racer/ACC/nextSpeed
+    * to: /acc_autoPID
+    * direction: outbound
+    * transport: TCPROS
+ * topic: /rosout
+    * to: /rosout
+    * direction: outbound
+    * transport: TCPROS
+ * topic: /racer/teensy/steer
+    * to: /rccar_serial
+    * direction: outbound
+    * transport: TCPROS
+ * topic: /racer/lidar/distance
+    * to: /acc_readDistance (http://130.215.14.9:35190/)
+    * direction: inbound
+    * transport: TCPROS
+ * topic: /racer/teensy/rpm
+    * to: /rccar_serial (http://130.215.14.9:45209/)
+    * direction: inbound
+    * transport: TCPROS
+
+--------------------------------------------------------------------------------
+Node [/acc_autoPID]
+Publications: 
+ * /racer/teensy/pidinfo [std_msgs/Float32MultiArray]
+ * /rosout [rosgraph_msgs/Log]
+ * /racer/teensy/estop [std_msgs/Bool]
+
+Subscriptions: 
+ * /racer/ACC/nextSpeed [std_msgs/Float32]
+ * /racer/teensy/rpm [std_msgs/Float32]
+
+Services: 
+ * /acc_autoPID/get_loggers
+ * /acc_autoPID/set_logger_level
+
+
+contacting node http://130.215.14.9:44693/ ...
+Pid: 18330
+Connections:
+ * topic: /racer/teensy/estop
+    * to: /rccar_serial
+    * direction: outbound
+    * transport: TCPROS
+ * topic: /rosout
+    * to: /rosout
+    * direction: outbound
+    * transport: TCPROS
+ * topic: /racer/teensy/pidinfo
+    * to: /rccar_serial
+    * direction: outbound
+    * transport: TCPROS
+ * topic: /racer/ACC/nextSpeed
+    * to: /acc_acc (http://130.215.14.9:33663/)
+    * direction: inbound
+    * transport: TCPROS
+ * topic: /racer/teensy/rpm
+    * to: /rccar_serial (http://130.215.14.9:45209/)
+    * direction: inbound
+    * transport: TCPROS
+
+--------------------------------------------------------------------------------
+Node [/acc_readDistance]
+Publications: 
+ * /rosout [rosgraph_msgs/Log]
+ * /racer/lidar/distance [std_msgs/Float32]
+
+Subscriptions: 
+ * /scan [sensor_msgs/LaserScan]
+
+Services: 
+ * /acc_readDistance/get_loggers
+ * /acc_readDistance/set_logger_level
+
+
+contacting node http://130.215.14.9:35190/ ...
+Pid: 18328
+Connections:
+ * topic: /racer/lidar/distance
+    * to: /acc_acc
+    * direction: outbound
+    * transport: TCPROS
+ * topic: /rosout
+    * to: /rosout
+    * direction: outbound
+    * transport: TCPROS
+ * topic: /scan
+    * to: /urg_node (http://130.215.14.9:36848/)
+    * direction: inbound
+    * transport: TCPROS
+

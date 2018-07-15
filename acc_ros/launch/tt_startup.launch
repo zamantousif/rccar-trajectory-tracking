@@ -1,0 +1,5 @@
+<launch>
+<node name="rccar_serial" pkg="rosserial_python" type="serial_node.py" args="/dev/ttyACM0 _baud:=115200"/>
+<node name="rccar_acc_node" pkg="acc_ros" type="ACC.py"/>
+<node name="rccar_acc_auto_pid_node" pkg="acc_ros" type="sub_autoPID_work.py"/>
+</launch>
