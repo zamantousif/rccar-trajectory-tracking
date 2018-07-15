@@ -1,0 +1,3 @@
+<launch>
+<node name="rviz_visualisation_node" pkg="rviz" type="rviz" output="log" args="-d $(find rccar_track)/config/trajectory_tracking.rviz"/>
+</launch>
