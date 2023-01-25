@@ -1,11 +1,12 @@
 <launch>
-<arg name="rviz" default="true"/> 
+<arg name="rviz" default="true"/>
 <include file="$(find vicon_bridge)/launch/vicon.launch"/>
 <node name="vicon_traker_node" pkg="rccar_track" type="viconTracker.py"/>
 <node name="poseCallback_node" pkg="rccar_track" type="PoseCallBack.py" output="log"/>
 
 
 <node name="rviz_visualisation_node" pkg="rviz" type="rviz" output="log" args="-d $(find rccar_track)/config/trajectory_tracking.rviz" if="$(arg rviz)"/>
+<node name="traj_generation_node" pkg="rccar_track" type="trajGen.py" output="screen"/>
 <node name="tracking_node" pkg="rccar_track" type="trajTrac.py" output="screen"/>
 <node name="goal_pub_node" pkg="rccar_track" type="fkgoal.py" output="log"/>
 <node name="PID_pub_node" pkg="rccar_track" type="PIDPub.py" output="log"/>
